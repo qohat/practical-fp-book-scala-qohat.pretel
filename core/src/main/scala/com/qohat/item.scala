@@ -20,12 +20,4 @@ package object item {
         brand: Brand,
         category: Category
     )
-
-    trait Items[F[_]] {
-        def findAll: F[List[Item]]
-        def findBy(bandName: BrandName): F[List[Item]]
-        def findById(id: ItemId): F[Option[Item]]
-        def create(item: Item): F[ItemId]
-        def update(id: ItemId, item: Item): F[Unit]
-    }
 }
