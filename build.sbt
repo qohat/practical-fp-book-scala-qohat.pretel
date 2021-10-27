@@ -156,6 +156,7 @@ ThisBuild / scalaVersion := "2.13.5"
         circe("circe-parser"),
         ciris("ciris"),
         simulacrum,
+        newType,
         scalaTest % Test
       )
     ).dependsOn(test)
@@ -167,7 +168,7 @@ ThisBuild / scalaVersion := "2.13.5"
       scalacOptions ++= options,
       libraryDependencies ++= Seq(
         cats("cats-core"),
-        "org.typelevel" %% "cats-effect"     % "3.1.1",
+        "org.typelevel" %% "cats-effect" % "3.1.1",
         fs2("fs2-core"),
         log4cats("log4cats-core"),
         log4cats("log4cats-slf4j"),

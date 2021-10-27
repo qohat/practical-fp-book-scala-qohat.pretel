@@ -1,5 +1,7 @@
 package com.qohat.domain
 
+import com.qohat.user._
+
 trait Users[F[_]] {
   def find(
     username: UserName
