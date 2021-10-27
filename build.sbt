@@ -64,18 +64,113 @@ ThisBuild / scalaVersion := "2.13.5"
     )
   ).dependsOn(test)
 
+  lazy val domain = (project in file("domain"))
+    .settings(commonSettings: _*)
+    .settings(
+      name := "domain",
+      scalacOptions ++= options,
+      libraryDependencies ++= Seq(
+        fs2("fs2-core"),
+        scalaTest % Test
+      )
+    ).dependsOn(core, test)
 
-  lazy val test = (project in file("test"))
-  .settings(commonSettings: _*)
-  .settings(
-    name := "test",
-    scalacOptions ++= options,
-    libraryDependencies ++= Seq(
-      cats("cats-core"),
-      "org.typelevel" %% "cats-effect"     % "3.1.1",
-      fs2("fs2-core"),
-      log4cats("log4cats-core"),
-      log4cats("log4cats-slf4j"),
-      scalaTest
-    )
+  lazy val adapter = (project in file("adapter"))
+    .settings(commonSettings: _*)
+    .settings(
+      name := "adapter",
+      scalacOptions ++= options,
+      libraryDependencies ++= Seq(
+        cats("cats-core"),
+        "org.typelevel" %% "cats-effect"     % "3.1.1",
+        "org.typelevel" %% "cats-mtl"        % "1.2.1",
+        fs2("fs2-core"),
+        monocle("monocle-core"),
+        monocle("monocle-macro"),
+        refined("refined-cats"),
+        refined("refined-cats"),
+        derevo("derevo-cats"),
+        derevo("derevo-cats-tagless"),
+        derevo("derevo-circe-magnolia"),
+        "tf.tofu" %% "tofu-core-higher-kind" % "0.10.2",
+        circe("circe-core"),
+        circe("circe-generic"),
+        circe("circe-parser"),
+        ciris("ciris"),
+        simulacrum,
+        scalaTest % Test
+      )
+    ).dependsOn(core, test, infrastructure, domain)
+
+  lazy val application = (project in file("application"))
+    .settings(commonSettings: _*)
+    .settings(
+      name := "application",
+      scalacOptions ++= options,
+      libraryDependencies ++= Seq(
+        cats("cats-core"),
+        "org.typelevel" %% "cats-effect"     % "3.1.1",
+        "org.typelevel" %% "cats-mtl"        % "1.2.1",
+        fs2("fs2-core"),
+        monocle("monocle-core"),
+        monocle("monocle-macro"),
+        refined("refined-cats"),
+        refined("refined-cats"),
+        derevo("derevo-cats"),
+        derevo("derevo-cats-tagless"),
+        derevo("derevo-circe-magnolia"),
+        "tf.tofu" %% "tofu-core-higher-kind" % "0.10.2",
+        circe("circe-core"),
+        circe("circe-generic"),
+        circe("circe-parser"),
+        ciris("ciris"),
+        simulacrum,
+        scalaTest % Test
+      )
+    ).dependsOn(
+    core, test, domain
   )
+
+  lazy val infrastructure = (project in file("infrastructure"))
+    .settings(commonSettings: _*)
+    .settings(
+      name := "infrastructure",
+      scalacOptions ++= options,
+      libraryDependencies ++= Seq(
+        cats("cats-core"),
+        "org.typelevel" %% "cats-effect"     % "3.1.1",
+        "org.typelevel" %% "cats-mtl"        % "1.2.1",
+        fs2("fs2-core"),
+        monocle("monocle-core"),
+        monocle("monocle-macro"),
+        refined("refined-cats"),
+        refined("refined-cats"),
+        derevo("derevo-cats"),
+        derevo("derevo-cats-tagless"),
+        derevo("derevo-circe-magnolia"),
+        "tf.tofu" %% "tofu-core-higher-kind" % "0.10.2",
+        log4cats("log4cats-core"),
+        log4cats("log4cats-slf4j"),
+        circe("circe-core"),
+        circe("circe-generic"),
+        circe("circe-parser"),
+        ciris("ciris"),
+        simulacrum,
+        scalaTest % Test
+      )
+    ).dependsOn(test)
+    
+    lazy val test = (project in file("test"))
+    .settings(commonSettings: _*)
+    .settings(
+      name := "test",
+      scalacOptions ++= options,
+      libraryDependencies ++= Seq(
+        cats("cats-core"),
+        "org.typelevel" %% "cats-effect"     % "3.1.1",
+        fs2("fs2-core"),
+        log4cats("log4cats-core"),
+        log4cats("log4cats-slf4j"),
+        scalaTest
+      )
+    )
