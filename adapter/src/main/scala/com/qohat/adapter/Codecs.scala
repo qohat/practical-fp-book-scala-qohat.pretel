@@ -3,7 +3,9 @@ package com.qohat.adapter
 import io.circe.{Decoder, Encoder, Json}
 import java.util.UUID
 import com.qohat.brand._
-
+import fs2.Stream
+import org.http4s.headers.`Content-Type`
+import org.http4s.{Entity, EntityEncoder, Headers, MediaType}
 
 object Codecs {
 
