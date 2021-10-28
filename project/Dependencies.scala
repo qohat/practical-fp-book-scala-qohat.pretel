@@ -14,6 +14,7 @@ object Dependencies {
     "com.typesafe.scala-logging" %% artifact % "3.9.2"
   def logback(artifact: String): ModuleID =
     "ch.qos.logback" % artifact % "1.2.3"
+  def http4s(artifact: String): ModuleID = "org.http4s" %% artifact % "0.23.6"
   lazy val newType = "io.estatico" %% "newtype" % "0.4.4"
   lazy val squants = "org.typelevel"  %% "squants"  % "1.6.0"
   lazy val simulacrum: ModuleID = "org.typelevel" %% "simulacrum" % "1.0.1"
