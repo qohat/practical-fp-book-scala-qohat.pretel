@@ -1,6 +1,6 @@
 import Dependencies._
 
-Global / onChangedBuildSource := ReloadOnSourceChanges
+//Global / onChangedBuildSource := ReloadOnSourceChanges
 
 ThisBuild / scalaVersion := "2.13.5"
 
@@ -45,6 +45,9 @@ ThisBuild / scalaVersion := "2.13.5"
       circe("circe-generic"),
       circe("circe-parser"),
       ciris("ciris"),
+      http4s("http4s-dsl"),
+      http4s("http4s-blaze-server"),
+      http4s("http4s-circe"),
       scalaTest % Test
     )
   ).aggregate(core, test)
@@ -98,6 +101,9 @@ ThisBuild / scalaVersion := "2.13.5"
         circe("circe-parser"),
         ciris("ciris"),
         simulacrum,
+        http4s("http4s-dsl"),
+        http4s("http4s-blaze-server"),
+        http4s("http4s-circe"),
         scalaTest % Test
       )
     ).dependsOn(core, test, infrastructure, domain)
@@ -124,6 +130,9 @@ ThisBuild / scalaVersion := "2.13.5"
         circe("circe-generic"),
         circe("circe-parser"),
         ciris("ciris"),
+        http4s("http4s-dsl"),
+        http4s("http4s-blaze-server"),
+        http4s("http4s-circe"),
         simulacrum,
         scalaTest % Test
       )
@@ -155,6 +164,9 @@ ThisBuild / scalaVersion := "2.13.5"
         circe("circe-generic"),
         circe("circe-parser"),
         ciris("ciris"),
+        http4s("http4s-dsl"),
+        http4s("http4s-blaze-server"),
+        http4s("http4s-circe"),
         simulacrum,
         newType,
         scalaTest % Test
