@@ -1,10 +1,11 @@
 import Dependencies._
 
-//Global / onChangedBuildSource := ReloadOnSourceChanges
+Global / onChangedBuildSource := ReloadOnSourceChanges
 
 ThisBuild / scalaVersion := "2.13.5"
 
   lazy val options = Seq(
+    "-Wunused-imports",
     "-Wconf:cat=unused:info",
     "-Ymacro-annotations" // for newtype and simulacrum
   )
