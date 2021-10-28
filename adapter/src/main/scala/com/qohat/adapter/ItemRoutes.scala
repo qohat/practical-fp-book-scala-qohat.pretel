@@ -32,8 +32,8 @@ final case class ItemRoutes[F[_]: Monad](
 
     private val httpRoutes: HttpRoutes[F] = 
         HttpRoutes.of[F] {
-            case GET -> Root =>
-                Ok(brand.fold(items.findAll)(b => items.findBy(b.toDomain)))
+            case GET -> Root / "brand" / UUIDVar(brandId) =>
+                Ok(brandId.fold(items.findAll)(b => items.findBy(b.toDomain)))
         }
 
     val routes: HttpRoutes[F] = Router(prefixPath -> httpRoutes)
