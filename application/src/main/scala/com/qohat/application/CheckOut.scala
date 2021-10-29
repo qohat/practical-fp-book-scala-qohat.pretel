@@ -12,6 +12,7 @@ import cats.data.NonEmptyList
 import com.qohat.payment.Payment
 import com.qohat.errors._
 import cats.MonadThrow
+import com.qohat.adapter.errors.EmptyCartError
 
 final case class CheckOut[F[_]: Monad](
     payments: PaymentClient[F],
