@@ -22,4 +22,5 @@ object Dependencies {
   lazy val scalaCheck: ModuleID = "org.scalacheck" %% "scalacheck" % "1.14.3"
   lazy val scalaTestPlus: ModuleID = "org.scalatestplus" %% "scalacheck-1-14" % "3.1.0.1"
   lazy val redis: ModuleID = "dev.profunktor" %% "redis4cats-effects" % "1.0.0"
+  lazy val catsRetry: ModuleID = "com.github.cb372" %% "cats-retry" % "3.1.0"
 }

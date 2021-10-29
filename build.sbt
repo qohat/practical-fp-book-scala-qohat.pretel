@@ -5,9 +5,7 @@ Global / onChangedBuildSource := ReloadOnSourceChanges
 ThisBuild / scalaVersion := "2.13.5"
 
   lazy val options = Seq(
-    "-Wunused-imports",
-    "-Wconf:cat=unused:info",
-    "-Ymacro-annotations" // for newtype and simulacrum
+    "-Ymacro-annotations", "-Yrangepos", "-Wconf:cat=unused:info"
   )
 
   lazy val commonSettings = Seq(
@@ -74,7 +72,10 @@ ThisBuild / scalaVersion := "2.13.5"
       name := "domain",
       scalacOptions ++= options,
       libraryDependencies ++= Seq(
-        fs2("fs2-core"),
+        cats("cats-core"),
+        "org.typelevel" %% "cats-effect"     % "3.1.1",
+        "org.typelevel" %% "cats-mtl"        % "1.2.1",
+        catsRetry,
         scalaTest % Test
       )
     ).dependsOn(core, test)

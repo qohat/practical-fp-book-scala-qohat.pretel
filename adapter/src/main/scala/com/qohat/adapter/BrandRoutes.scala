@@ -14,7 +14,7 @@ final case class BrandRoutes[F[_]: Monad](brands: Brands[F]) extends Http4sDsl[F
     import org.http4s.circe.CirceEntityEncoder._ // for Generic EntityEncoder
     import org.http4s.circe.CirceEntityDecoder._ // for Generic EntityDecoder
     // import io.circe.generic.auto._ // for Generic (case class) Encoder
-    //import Codecs._
+    import Codecs._
     import io.circe.syntax._ // for asJson
     import cats.syntax.applicativeError._ // for recoverWith and handleErrorWith
     import cats.syntax.functor._ // for map
@@ -32,7 +32,7 @@ final case class BrandRoutes[F[_]: Monad](brands: Brands[F]) extends Http4sDsl[F
         case request @ POST -> Root =>
             request
             .as[Brand]
-            .flatMap(brands.create)
+            .flatMap(brands.create(_))
             .flatMap(Created(_))
             .handleErrorWith {
                 case UserNotAuthenticated(_) => Forbidden()
