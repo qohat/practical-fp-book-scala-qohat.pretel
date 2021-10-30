@@ -33,7 +33,6 @@ ThisBuild / scalaVersion := "2.13.5"
       monocle("monocle-core"),
       monocle("monocle-macro"),
       refined("refined-cats"),
-      refined("refined-cats"),
       derevo("derevo-cats"),
       derevo("derevo-cats-tagless"),
       derevo("derevo-circe-magnolia"),
@@ -62,7 +61,16 @@ ThisBuild / scalaVersion := "2.13.5"
     scalacOptions ++= options,
     libraryDependencies ++= Seq(
       newType,
-      squants
+      squants,
+      refined("refined-cats"),
+      derevo("derevo-cats"),
+      derevo("derevo-cats-tagless"),
+      derevo("derevo-circe-magnolia"),
+      "tf.tofu" %% "tofu-core-higher-kind" % "0.10.2",
+      circe("circe-core"),
+      circe("circe-generic"),
+      circe("circe-parser"),
+      ciris("ciris"),
     )
   ).dependsOn(test)
 
@@ -93,7 +101,6 @@ ThisBuild / scalaVersion := "2.13.5"
         monocle("monocle-core"),
         monocle("monocle-macro"),
         refined("refined-cats"),
-        refined("refined-cats"),
         derevo("derevo-cats"),
         derevo("derevo-cats-tagless"),
         derevo("derevo-circe-magnolia"),
@@ -122,7 +129,6 @@ ThisBuild / scalaVersion := "2.13.5"
         fs2("fs2-core"),
         monocle("monocle-core"),
         monocle("monocle-macro"),
-        refined("refined-cats"),
         refined("refined-cats"),
         derevo("derevo-cats"),
         derevo("derevo-cats-tagless"),
@@ -154,7 +160,6 @@ ThisBuild / scalaVersion := "2.13.5"
         fs2("fs2-core"),
         monocle("monocle-core"),
         monocle("monocle-macro"),
-        refined("refined-cats"),
         refined("refined-cats"),
         derevo("derevo-cats"),
         derevo("derevo-cats-tagless"),
