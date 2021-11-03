@@ -2,12 +2,14 @@ package com.qohat.adapter
 
 import cats.Monad
 import com.qohat.domain.Brands
+import org.http4s._
+import org.http4s.circe.CirceEntityEncoder._
 import org.http4s.dsl.Http4sDsl
-import org.http4s.HttpRoutes
 import org.http4s.server.Router
 import io.circe.Json
 import com.qohat.brand._
-import com.qohat.adapter.errors.UserNotAuthenticated
+import com.qohat.core.errors.UserNotAuthenticated
+
 
 final case class BrandRoutes[F[_]: Monad](brands: Brands[F]) extends Http4sDsl[F] {
 
@@ -26,17 +28,8 @@ final case class BrandRoutes[F[_]: Monad](brands: Brands[F]) extends Http4sDsl[F
         case GET -> Root => 
             brands
             .findAll
-            .map(_.asJson)
+            //.map(_.asJson)
             .flatMap(Ok(_))
-        
-        case request @ POST -> Root =>
-            request
-            .as[Brand]
-            .flatMap(brands.create(_))
-            .flatMap(Created(_))
-            .handleErrorWith {
-                case UserNotAuthenticated(_) => Forbidden()
-            }
     }
 
     val routes: HttpRoutes[F] = Router(prefixPath -> httpRoutes)
