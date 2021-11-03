@@ -39,6 +39,7 @@ ThisBuild / scalaVersion := "2.13.5"
       "tf.tofu" %% "tofu-core-higher-kind" % "0.10.2",
       log4cats("log4cats-core"),
       log4cats("log4cats-slf4j"),
+      circe("circe-refined"),
       circe("circe-core"),
       circe("circe-generic"),
       circe("circe-parser"),
@@ -68,9 +69,14 @@ ThisBuild / scalaVersion := "2.13.5"
       derevo("derevo-circe-magnolia"),
       "tf.tofu" %% "tofu-core-higher-kind" % "0.10.2",
       circe("circe-core"),
+      circe("circe-refined"),
       circe("circe-generic"),
       circe("circe-parser"),
       ciris("ciris"),
+      monocle("monocle-core"),
+      monocle("monocle-macro"),
+      http4s("http4s-dsl"),
+      http4s("http4s-circe"),
     )
   ).dependsOn(test)
 

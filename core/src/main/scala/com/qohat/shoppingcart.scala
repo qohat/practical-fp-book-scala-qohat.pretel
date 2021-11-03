@@ -10,7 +10,7 @@ import squants.market.Money
 
 package object shoppingcart {
     @newtype case class Quantity(value: PosInt)
-    case class CartTotal(items: List[Item], total: Money)
     case class CartItem(item: Item, quantity: Quantity)
+    case class CartTotal(items: List[CartItem], total: Money)
     case class Cart(items: Map[ItemId, Quantity])
 }
